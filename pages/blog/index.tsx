@@ -33,7 +33,7 @@ const index = ({ allPostsData }) => {
                         <article key={postId}>
                             <Link href={`/blog/post/${postId}`}>
                                 <div>
-                                    <img src={`${thumbnail}`} alt="" />
+                                    <img src={`/blog/thumbnails/${thumbnail}`} alt="" />
                                 </div>
                             </Link>
                             <h3>
