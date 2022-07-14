@@ -1,11 +1,10 @@
 import Layout, { siteTitle } from '../../components/blog/Layout';
 import { getPostsData } from '../../lib/post';
-import Link from 'next/link';
+import Link from "../../components/global/MyLink";
 import Head from 'next/head';
 
 export const getStaticProps = async () => {
     const allPostsData: {}[] = getPostsData();
-    console.log(allPostsData);
 
     return {
         props: {
