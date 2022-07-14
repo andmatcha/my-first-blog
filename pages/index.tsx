@@ -31,7 +31,7 @@ const index = ({ allPostsData }) => {
             <Layout>
                 {allPostsData.map(
                     ({ postId, title, date, thumbnail }: postData) => (
-                        <PostCard postId={postId} title={title} src={thumbnail} date={date} />
+                        <PostCard key={postId} postId={postId} title={title} src={thumbnail} date={date} />
                     )
                 )}
             </Layout>
