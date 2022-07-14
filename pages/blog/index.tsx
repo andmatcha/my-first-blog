@@ -1,4 +1,4 @@
-import Layout, { siteTitle } from '../../components/Layout';
+import Layout, { siteTitle } from '../../components/blog/Layout';
 import { getPostsData } from '../../lib/post';
 import Link from 'next/link';
 import Head from 'next/head';
