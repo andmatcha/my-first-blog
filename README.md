@@ -24,3 +24,4 @@
 
 ## 注意事項
 - emotionの関係でLinkタグがデフォルトでうまく機能しないので、`import Link from 'next/link';`ではなく、`import Link from "/components/global/MyLink";`を利用する。(ファイルごとに適切な相対パスで指定するように)
+- emotionでクラスをつけるときは`className={}`ではなく、`css={}`を使うように。
