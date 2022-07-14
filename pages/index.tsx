@@ -1,15 +1,49 @@
-import Head from "next/head";
-import Image from "next/image";
+import Layout, { siteTitle } from '../components/Layout';
+import { getPostsData } from '../lib/post';
 import Link from "../components/global/MyLink";
+import Head from 'next/head';
 
-export default function Home() {
+export const getStaticProps = async () => {
+    const allPostsData: {}[] = getPostsData();
+
+    return {
+        props: {
+            allPostsData,
+        },
+    };
+};
+
+interface postData {
+    postId: string;
+    title: string;
+    date: string;
+    thumbnail: string;
+}
+
+const index = ({ allPostsData }) => {
     return (
         <>
-            <h1>ポートフォリオサイト</h1>
-            <p>ただいま準備中...</p>
-            <Link href={"/blog"}>
-                <a>ブログはこちら</a>
-            </Link>
+            <Head>
+                <title>{ siteTitle }</title>
+            </Head>
+            <Layout>
+                {allPostsData.map(
+                    ({ postId, title, date, thumbnail }: postData) => (
+                        <article key={postId}>
+                            <Link href={`/post/${postId}`}>
+                                <div>
+                                    <img src={`/thumbnails/${thumbnail}`} alt="" />
+                                </div>
+                            </Link>
+                            <h3>
+                                <a>{`${title}`}</a>
+                            </h3>
+                        </article>
+                    )
+                )}
+            </Layout>
         </>
     );
 }
+
+export default index;

@@ -1,5 +1,5 @@
-import Layout, { siteTitle } from "../../../components/blog/Layout";
-import { getAllPostIds, getPostData } from "../../../lib/post";
+import Layout, { siteTitle } from "../../components/Layout";
+import { getAllPostIds, getPostData } from "../../lib/post";
 import sanitizeHtml from 'sanitize-html';
 import Head from 'next/head';
 
