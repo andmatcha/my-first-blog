@@ -1,18 +1,17 @@
 import { css } from "@emotion/react";
 import Link from "../global/MyLink";
-import Image from "next/image";
 
 const PostCard = (props: { postId: string; title: string; src: string; date: string; }) => {
     return (
         <Link href={`/post/${props.postId}`}>
             <article css={styles.card}>
-                <div css={styles.imageBox}>
-                    <Image
+                <picture css={styles.imageBox}>
+                    <img
                         src={`/thumbnails/${props.src}`}
                         alt=""
                         css={styles.image}
                     />
-                </div>
+                </picture>
                 <div css={styles.text}>
                     <h4 css={styles.date}>{props.date}</h4>
                     <h3 css={styles.title}>{props.title}</h3>

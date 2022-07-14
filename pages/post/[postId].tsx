@@ -1,7 +1,7 @@
 import Layout, { siteTitle } from "../../components/Layout";
 import { getAllPostIds, getPostData } from "../../lib/post";
-import sanitizeHtml from 'sanitize-html';
-import Head from 'next/head';
+import sanitizeHtml from "sanitize-html";
+import Head from "next/head";
 
 export const getStaticPaths = async () => {
     const paths = getAllPostIds();
@@ -9,8 +9,8 @@ export const getStaticPaths = async () => {
     return {
         paths,
         fallback: false,
-    }
-}
+    };
+};
 
 export const getStaticProps = async ({ params }) => {
     const postData = await getPostData(params.postId);
@@ -18,13 +18,13 @@ export const getStaticProps = async ({ params }) => {
     return {
         props: { postData },
     };
-}
+};
 
 const post = ({ postData }) => {
     return (
         <>
             <Head>
-                <title>{postData.title} | { siteTitle }</title>
+                <title>{`${postData.title} | siteTitle`}</title>
             </Head>
             <Layout>
                 {postData.title}
@@ -39,6 +39,6 @@ const post = ({ postData }) => {
             </Layout>
         </>
     );
-}
+};
 
 export default post;
