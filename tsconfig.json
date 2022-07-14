@@ -18,13 +18,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "types": ["@emotion/react/types/css-prop"],
+    "jsxImportSource": "@emotion/react",
+    // "types": [
+    //   "@emotion/react/types/css-prop"
+    // ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "next.config.tsx"  ],
+    "**/*.tsx",
+    "next.config.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
