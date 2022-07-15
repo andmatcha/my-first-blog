@@ -7,14 +7,12 @@ import { css } from "@emotion/react";
 
 export const siteTitle = "piYo code | Engineering Blog";
 
-const Layout = (props) => {
+const Layout = (props: { head: any; main: any; }) => {
     return (
         <>
             <div css={styles.wrapper}>
                 <Header />
-                <div>
-                    <MainVisual />
-                </div>
+                <div>{props.head}</div>
                 <div css={styles.contents}>
                     <main css={styles.main}>{props.main}</main>
                     <aside css={styles.aside}>
