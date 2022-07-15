@@ -1,8 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { convertToHTMLString } from "minutemd";
 
 const postsDirectory: string = path.join(process.cwd(), "posts");
 
@@ -47,8 +46,7 @@ export const getPostData = async (postId) => {
     const fullPath = path.join(postsDirectory, `${postId}.md`);
     const fileContent = fs.readFileSync(fullPath, 'utf-8');
     const matterResult = matter(fileContent);
-    const blogContentTmp = await remark().use(html).process(matterResult.content);
-    const blogHTML = blogContentTmp.toString();
+    const blogHTML = convertToHTMLString(matterResult.content);
 
     return {
         postId,

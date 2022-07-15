@@ -11,14 +11,14 @@
 - @types/node@18.0.3
 - @types/react@18.0.15
 - @types/sanitize-html@2.6.2
+- destyle.css@3.0.2
 - eslint-config-next@12.2.2
 - eslint@8.19.0
 - gray-matter@4.0.3
+- minutemd@1.1.6
 - next@12.2.2
 - react-dom@18.2.0
 - react@18.2.0
-- remark-html@15.0.1
-- remark@14.0.2
 - sanitize-html@2.7.0
 - typescript@4.7.4
 

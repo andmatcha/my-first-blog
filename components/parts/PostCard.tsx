@@ -25,12 +25,13 @@ export default PostCard;
 
 const styles = {
     card: css`
-        width: 480px;
-        height: 560px;
+        width: 320px;
+        height: 480px;
         display: flex;
         flex-direction: column;
         cursor: pointer;
         gap: 12px;
+        border: 1px solid #edebe4;
     `,
     imageBox: css`
         width: 100%;
@@ -50,6 +51,5 @@ const styles = {
     title: css`
         font-size: 1.6rem;
         margin-top: 12px;
-    `
-
-}
+    `,
+};
