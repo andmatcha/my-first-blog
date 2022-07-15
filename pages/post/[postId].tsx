@@ -26,17 +26,22 @@ const post = ({ postData }) => {
             <Head>
                 <title>{`${postData.title} | siteTitle`}</title>
             </Head>
-            <Layout>
-                {postData.title}
-                <br />
-                {postData.date}
-                <br />
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: sanitizeHtml(postData.blogHTML),
-                    }}
-                ></div>
-            </Layout>
+            <Layout
+                head=""
+                main={
+                    <>
+                        <h1>{postData.title}</h1>
+                        <br />
+                        <p>{postData.date}</p>
+                        <br />
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: sanitizeHtml(postData.blogHTML),
+                            }}
+                        ></div>
+                    </>
+                }
+            />
         </>
     );
 };
