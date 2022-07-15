@@ -1,9 +1,9 @@
-import Layout, { siteTitle } from '../components/Layout';
-import { getPostsData } from '../lib/post';
+import Layout, { siteTitle } from "../components/Layout";
+import { getPostsData } from "../lib/post";
 import Link from "../components/global/MyLink";
-import Head from 'next/head';
-import { css } from '@emotion/react';
-import PostCard from '../components/parts/PostCard';
+import Head from "next/head";
+import { css } from "@emotion/react";
+import PostCard from "../components/parts/PostCard";
 
 export const getStaticProps = async () => {
     const allPostsData: {}[] = getPostsData();
@@ -28,21 +28,38 @@ const index = ({ allPostsData }) => {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <Layout>
-                {allPostsData.map(
-                    ({ postId, title, date, thumbnail }: postData) => (
-                        <PostCard key={postId} postId={postId} title={title} src={thumbnail} date={date} />
-                    )
-                )}
-            </Layout>
+            <Layout
+                main={
+                    <div css={styles.blogsArea}>
+                        {allPostsData.map(
+                            ({ postId, title, date, thumbnail }: postData) => (
+                                <PostCard
+                                    key={postId}
+                                    postId={postId}
+                                    title={title}
+                                    src={thumbnail}
+                                    date={date}
+                                />
+                            )
+                        )}
+                    </div>
+                }
+            />
         </>
     );
-}
+};
 
 export default index;
 
 const styles = {
     test: css`
         background-color: #ffdf38;
+    `,
+    blogsArea: css`
+        padding: 0 12px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
     `,
 };
