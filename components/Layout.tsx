@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Header from './parts/Header';
 import { css } from '@emotion/react';
 
-export const siteTitle = 'OmuCode Tech Blog';
+export const siteTitle = 'ぴよこーど | Tech Blog';
 
 const Layout = ({ children }) => {
     return (

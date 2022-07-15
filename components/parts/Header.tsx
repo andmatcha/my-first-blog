@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 const Header = () => {
     return (
         <header css={styles.header}>
-            <h1 css={styles.title}>OMU Code - Tech Blog -</h1>
+            <h1 css={styles.title}>ぴよこーど - Tech Blog -</h1>
             <p className="intro">現役大学生の個人運営ブログ</p>
         </header>
     );
