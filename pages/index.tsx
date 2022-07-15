@@ -4,6 +4,7 @@ import Link from "../components/global/MyLink";
 import Head from "next/head";
 import { css } from "@emotion/react";
 import PostCard from "../components/parts/PostCard";
+import MainVisual from "../components/parts/MainVisual";
 
 export const getStaticProps = async () => {
     const allPostsData: {}[] = getPostsData();
@@ -29,6 +30,7 @@ const index = ({ allPostsData }) => {
                 <title>{siteTitle}</title>
             </Head>
             <Layout
+                head={<MainVisual />}
                 main={
                     <div css={styles.blogsArea}>
                         {allPostsData.map(
