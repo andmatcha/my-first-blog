@@ -63,7 +63,7 @@ const styles = {
     title: css`
         font-size: 2.4rem;
         font-weight: 500;
-        padding: 1rem 0;
+        margin: 1rem 0;
     `,
     date: css`
         font-size: 1rem;
@@ -84,18 +84,19 @@ const styles = {
     `,
     body: css`
         color: #333;
-        padding-top: 4rem;
+        margin-top: 4rem;
         width: 100%;
         @import "~normalize.css";
         h2 {
             font-size: 2rem;
             font-weight: 600;
             border-bottom: 1px solid #aaa;
+            margin: 1.6rem 0;
         }
         h3 {
             font-size: 1.6rem;
             line-height: 2.4rem;
-            margin-left: 1rem;
+            margin: 1.2rem 0 1.2rem 1rem ;
             position: relative;
             ::before {
                 content: "";
@@ -113,7 +114,7 @@ const styles = {
             font-size: 1rem;
             letter-spacing: 0.04rem;
             line-height: 1.6rem;
-            padding: 1rem 0;
+            margin: 2.4rem 0;
         }
         ul {
             list-style: inside;
