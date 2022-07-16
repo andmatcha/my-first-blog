@@ -1,4 +1,4 @@
-import "sanitize.css";
+import "destyle.css";
 import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
