@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
-import { convertToHTMLString } from "minutemd";
+import showdown from "showdown";
 
 const postsDirectory: string = path.join(process.cwd(), "posts");
 
@@ -46,7 +46,8 @@ export const getPostData = async (postId) => {
     const fullPath = path.join(postsDirectory, `${postId}.md`);
     const fileContent = fs.readFileSync(fullPath, 'utf-8');
     const matterResult = matter(fileContent);
-    const blogHTML = convertToHTMLString(matterResult.content);
+    const converter = new showdown.Converter();
+    const blogHTML = converter.makeHtml(matterResult.content);
 
     return {
         postId,
