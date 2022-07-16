@@ -1,8 +1,6 @@
-import Head from "next/head";
 import Header from "./parts/Header";
 import Footer from "./parts/Footer";
 import SideBar from "./parts/SideBar";
-import MainVisual from "./parts/MainVisual";
 import { css } from "@emotion/react";
 
 export const siteTitle = "piYo code | Engineering Blog";
@@ -29,18 +27,29 @@ export default Layout;
 
 const styles = {
     wrapper: css`
-        background-color: #fffdf5;
+        font-family: "Roboto Mono", "Noto Sans JP", sans-serif;
+        background-color: #fffef5;
     `,
     contents: css`
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
-        padding: 12px;
+        gap: 24px;
+        padding: 8rem 13%;
+        @media (max-width: 960px) {
+            flex-direction: column;
+        }
     `,
     main: css`
-        width: 75%;
+        width: calc(75% - 12px);
+        @media (max-width: 960px) {
+            width: 100%;
+        }
     `,
     aside: css`
-        width: 25%;
+        width: calc(25% - 12px);
+        @media (max-width: 960px) {
+            width: 100%;
+        }
     `,
 };
