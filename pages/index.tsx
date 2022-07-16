@@ -58,10 +58,8 @@ const styles = {
         background-color: #ffdf38;
     `,
     blogsArea: css`
-        padding: 0 12px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         gap: 12px;
     `,
 };

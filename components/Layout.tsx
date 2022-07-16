@@ -32,22 +32,22 @@ const styles = {
     `,
     contents: css`
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
-        padding: 8rem 15%;
+        gap: 24px;
+        padding: 8rem 13%;
         @media (max-width: 960px) {
             flex-direction: column;
         }
     `,
     main: css`
-        width: 75%;
-        padding: 0 36px;
+        width: calc(75% - 12px);
         @media (max-width: 960px) {
             width: 100%;
         }
     `,
     aside: css`
-        width: 25%;
+        width: calc(25% - 12px);
         @media (max-width: 960px) {
             width: 100%;
         }
