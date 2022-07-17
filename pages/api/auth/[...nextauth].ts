@@ -6,12 +6,12 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default NextAuth({
-    // 1つ以上の認証プロバイダーを構成
     providers: [
         GithubProvider({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_SECRET,
         }),
     ],
-    adapter: PrismaAdapter(prisma),
+    secret: process.env.NEXTAUTH_SECRET,
+    // adapter: PrismaAdapter(prisma),
 });
