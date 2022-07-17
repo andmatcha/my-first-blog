@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
+import { SessionProvider } from "next-auth/react";
 
-const App = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps: { session, ...pageProps } }) => {
     const router = useRouter();
     useEffect(() => {
         const handleRouteChange = (url) => {
@@ -40,7 +41,9 @@ const App = ({ Component, pageProps }) => {
             `,
                 }}
             />
-            <Component {...pageProps} />
+            <SessionProvider session={session}>
+                <Component {...pageProps} />
+            </SessionProvider>
         </>
     );
 };
