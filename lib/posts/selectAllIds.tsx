@@ -1,8 +1,7 @@
-import type { NextApiHandler } from "next";
-import prisma from "../../../lib/prisma";
+import prisma from "../prisma";
 
 // ビルド時に実行してgetStaticPathsに渡すID
-const handler: NextApiHandler = async (req, res) => {
+const selectAllIds = async () => {
     const postIds = await prisma.post
         .findMany({
             where: {
@@ -18,7 +17,6 @@ const handler: NextApiHandler = async (req, res) => {
         .finally(async () => {
             await prisma.$disconnect();
         });
-    res.json(postIds);
-    return;
+    return postIds;
 };
-export default handler;
+export default selectAllIds;

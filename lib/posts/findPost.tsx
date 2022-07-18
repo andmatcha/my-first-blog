@@ -1,13 +1,11 @@
-import type { NextApiHandler } from "next";
-import prisma from "../../../lib/prisma";
+import prisma from "../prisma";
 
 // ビルド時に実行して投稿ページを生成するためのデータをDBから取得
-const handler: NextApiHandler = async (req, res) => {
-    const postId: number = Number(req.query.id);
-    const post = await prisma.post
+const findPost = async (postId) => {
+    const data = await prisma.post
         .findUniqueOrThrow({
             where: {
-                id: postId,
+                id: Number(postId),
             },
         })
         .catch((e) => {
@@ -16,7 +14,7 @@ const handler: NextApiHandler = async (req, res) => {
         .finally(async () => {
             await prisma.$disconnect();
         });
-    res.json(post);
-    return;
+    const post = JSON.parse(JSON.stringify(data));
+    return post;
 };
-export default handler;
+export default findPost;

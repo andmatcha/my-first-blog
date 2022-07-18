@@ -11,6 +11,7 @@ datasource db {
 
 model Post {
     id          Int      @id @default(autoincrement())
+    fileName    String   @unique
     published   Boolean  @default(false)
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt

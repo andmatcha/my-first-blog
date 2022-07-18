@@ -3,7 +3,7 @@ import Head from "next/head";
 import { css } from "@emotion/react";
 import PostCard from "../components/parts/PostCard";
 import MainVisual from "../components/parts/MainVisual";
-import { selectAllPosts } from "../lib/posts";
+import selectAllPosts from "../lib/posts/selectAllPosts";
 
 export const getStaticProps = async () => {
     const allPostsData: {}[] = await selectAllPosts();
@@ -32,7 +32,7 @@ const index = ({ allPostsData }) => {
                 head={<MainVisual />}
                 main={
                     <div css={styles.blogsArea}>
-                        {allPostsData.posts.map(
+                        {allPostsData.map(
                             ({ id, title, updatedAt, thumbnail }: postData) => (
                                 <PostCard
                                     key={id}

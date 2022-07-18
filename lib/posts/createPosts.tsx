@@ -1,8 +1,7 @@
-import type { NextApiHandler } from "next";
 import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
-import prisma from "../../../lib/prisma";
+import prisma from "../prisma";
 
 const postsDirectory: string = path.join(process.cwd(), "posts");
 
@@ -43,7 +42,7 @@ const getPostsDataFromMd = () => {
     return allPostsData;
 };
 
-const postHandler = async (req, res) => {
+const createPosts = async () => {
     const allPostsData: any = getPostsDataFromMd();
     const allPostsDataOnDB = await prisma.post
         .createMany({
@@ -61,14 +60,4 @@ const postHandler = async (req, res) => {
     return;
 };
 
-const handler: NextApiHandler = (req, res) => {
-    switch (req.method) {
-        case "GET":
-            postHandler(req, res);
-            break;
-        default:
-            return res.status(405).json({ error: "Method not allowed." });
-    }
-};
-
-export default handler;
+export default createPosts;

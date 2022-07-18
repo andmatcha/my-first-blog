@@ -1,9 +1,8 @@
-import type { NextApiHandler } from "next";
-import prisma from "../../../lib/prisma";
+import prisma from "../prisma";
 
 // ビルド時に実行して投稿ページを生成するためのデータをDBから取得(公開設定の投稿を全件取得 (Postのpublished=trueのレコード))
-const handler: NextApiHandler = async (req, res) => {
-    const posts = await prisma.post
+const selectAllPosts = async () => {
+    const data = await prisma.post
         .findMany({
             where: {
                 published: true,
@@ -15,9 +14,7 @@ const handler: NextApiHandler = async (req, res) => {
         .finally(async () => {
             await prisma.$disconnect();
         });
-    res.json({
-        posts,
-    });
-    return;
+    const posts = JSON.parse(JSON.stringify(data));
+    return posts;
 };
-export default handler;
+export default selectAllPosts;

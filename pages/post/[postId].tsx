@@ -2,12 +2,12 @@ import Layout, { siteTitle } from "../../components/Layout";
 import sanitizeHtml from "sanitize-html";
 import Head from "next/head";
 import { css } from "@emotion/react";
-import { findPost } from "../../lib/posts";
+import findPost from "../../lib/posts/findPost";
 import Showdown from "showdown";
+import selectAllIds from "../../lib/posts/selectAllIds";
 
 export const getStaticPaths = async () => {
-    const res = await fetch("https://www.piyocode.blog/api/posts/ids");
-    const ids = await res.json();
+    const ids = await selectAllIds();
     const paths = [];
     ids.forEach((v) => {
         const postId = v.id.toString();
