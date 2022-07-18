@@ -1,13 +1,13 @@
 import Layout, { siteTitle } from "../components/Layout";
-import { getPostsData } from "../lib/post";
-import Link from "../components/global/MyLink";
 import Head from "next/head";
 import { css } from "@emotion/react";
 import PostCard from "../components/parts/PostCard";
 import MainVisual from "../components/parts/MainVisual";
+import { selectAllPosts } from "../lib/posts";
 
 export const getStaticProps = async () => {
-    const allPostsData: {}[] = getPostsData();
+    const allPostsData: {}[] = await selectAllPosts();
+    // const allPostsData: {}[] = getPostsData();
 
     return {
         props: {
@@ -33,7 +33,7 @@ const index = ({ allPostsData }) => {
                 head={<MainVisual />}
                 main={
                     <div css={styles.blogsArea}>
-                        {allPostsData.map(
+                        {allPostsData.posts.map(
                             ({ postId, title, date, thumbnail }: postData) => (
                                 <PostCard
                                     key={postId}
