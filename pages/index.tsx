@@ -16,9 +16,9 @@ export const getStaticProps = async () => {
 };
 
 interface postData {
-    postId: string;
+    id: string;
     title: string;
-    date: string;
+    updatedAt: string;
     thumbnail: string;
 }
 
@@ -33,13 +33,13 @@ const index = ({ allPostsData }) => {
                 main={
                     <div css={styles.blogsArea}>
                         {allPostsData.posts.map(
-                            ({ postId, title, date, thumbnail }: postData) => (
+                            ({ id, title, updatedAt, thumbnail }: postData) => (
                                 <PostCard
-                                    key={postId}
-                                    postId={postId}
+                                    key={id}
+                                    postId={id}
                                     title={title}
                                     src={thumbnail}
-                                    date={date}
+                                    date={updatedAt}
                                 />
                             )
                         )}
