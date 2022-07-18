@@ -7,7 +7,6 @@ import { selectAllPosts } from "../lib/posts";
 
 export const getStaticProps = async () => {
     const allPostsData: {}[] = await selectAllPosts();
-    // const allPostsData: {}[] = getPostsData();
 
     return {
         props: {
