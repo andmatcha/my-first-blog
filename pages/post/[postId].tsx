@@ -6,17 +6,17 @@ import { findPost } from "../../lib/posts";
 import Showdown from "showdown";
 
 export const getStaticPaths = async () => {
-    const res = await fetch("http://localhost:3000/api/posts/ids");
+    const res = await fetch("https://www.piyocode.blog/api/posts/ids");
     const ids = await res.json();
     const paths = [];
-    ids.forEach(v => {
+    ids.forEach((v) => {
         const postId = v.id.toString();
         paths.push({ params: { postId: postId } });
     });
-        return {
-            paths,
-            fallback: false,
-        };
+    return {
+        paths,
+        fallback: false,
+    };
 };
 
 export const getStaticProps = async ({ params }) => {
