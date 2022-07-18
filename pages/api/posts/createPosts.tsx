@@ -44,7 +44,7 @@ const getPostsDataFromMd = () => {
 };
 
 const postHandler = async (req, res) => {
-    const allPostsData = getPostsDataFromMd();
+    const allPostsData: any = getPostsDataFromMd();
     const allPostsDataOnDB = await prisma.post
         .createMany({
             data: allPostsData,
