@@ -1,12 +1,18 @@
 import Layout, { siteTitle } from "../../components/Layout";
-import { getAllPostIds, getPostData } from "../../lib/post";
 import sanitizeHtml from "sanitize-html";
 import Head from "next/head";
 import { css } from "@emotion/react";
+import findPost from "../../lib/posts/findPost";
+import Showdown from "showdown";
+import selectAllIds from "../../lib/posts/selectAllIds";
 
 export const getStaticPaths = async () => {
-    const paths = getAllPostIds();
-
+    const ids = await selectAllIds();
+    const paths = [];
+    ids.forEach((v) => {
+        const postId = v.id.toString();
+        paths.push({ params: { postId: postId } });
+    });
     return {
         paths,
         fallback: false,
@@ -14,14 +20,15 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-    const postData = await getPostData(params.postId);
-
+    const postData = await findPost(params.postId);
     return {
         props: { postData },
     };
 };
 
 const post = ({ postData }) => {
+    const converter = new Showdown.Converter();
+    const bodyHtml = sanitizeHtml(converter.makeHtml(postData.body));
     return (
         <>
             <Head>
@@ -32,12 +39,14 @@ const post = ({ postData }) => {
                 main={
                     <div css={styles.contentWrapper}>
                         <div css={styles.content}>
-                            <p css={styles.date}>{`最終更新日 ${postData.date}`}</p>
+                            <p
+                                css={styles.date}
+                            >{`最終更新日 ${postData.updatedAt}`}</p>
                             <h1 css={styles.title}>{postData.title}</h1>
                             <div
                                 css={styles.body}
                                 dangerouslySetInnerHTML={{
-                                    __html: sanitizeHtml(postData.blogHTML),
+                                    __html: bodyHtml,
                                 }}
                             ></div>
                         </div>
@@ -96,7 +105,7 @@ const styles = {
         h3 {
             font-size: 1.6rem;
             line-height: 2.4rem;
-            margin: 1.2rem 0 1.2rem 1rem ;
+            margin: 1.2rem 0 1.2rem 1rem;
             position: relative;
             ::before {
                 content: "";

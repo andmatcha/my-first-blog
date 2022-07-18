@@ -1,13 +1,12 @@
 import Layout, { siteTitle } from "../components/Layout";
-import { getPostsData } from "../lib/post";
-import Link from "../components/global/MyLink";
 import Head from "next/head";
 import { css } from "@emotion/react";
 import PostCard from "../components/parts/PostCard";
 import MainVisual from "../components/parts/MainVisual";
+import selectAllPosts from "../lib/posts/selectAllPosts";
 
 export const getStaticProps = async () => {
-    const allPostsData: {}[] = getPostsData();
+    const allPostsData: {}[] = await selectAllPosts();
 
     return {
         props: {
@@ -17,9 +16,9 @@ export const getStaticProps = async () => {
 };
 
 interface postData {
-    postId: string;
+    id: string;
     title: string;
-    date: string;
+    updatedAt: string;
     thumbnail: string;
 }
 
@@ -34,13 +33,13 @@ const index = ({ allPostsData }) => {
                 main={
                     <div css={styles.blogsArea}>
                         {allPostsData.map(
-                            ({ postId, title, date, thumbnail }: postData) => (
+                            ({ id, title, updatedAt, thumbnail }: postData) => (
                                 <PostCard
-                                    key={postId}
-                                    postId={postId}
+                                    key={id}
+                                    postId={id}
                                     title={title}
                                     src={thumbnail}
-                                    date={date}
+                                    date={updatedAt}
                                 />
                             )
                         )}
