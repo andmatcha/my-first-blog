@@ -29,6 +29,8 @@ export const getStaticProps = async ({ params }) => {
 const post = ({ postData }) => {
     const converter = new Showdown.Converter();
     const bodyHtml = sanitizeHtml(converter.makeHtml(postData.body));
+    const dateArr = postData.updatedAt.substring(0, 10).split("-");
+    const date = `${dateArr[0]}年${dateArr[1]}月${dateArr[2]}日`;
     return (
         <>
             <Head>
@@ -41,7 +43,7 @@ const post = ({ postData }) => {
                         <div css={styles.content}>
                             <p
                                 css={styles.date}
-                            >{`最終更新日 ${postData.updatedAt}`}</p>
+                            >{`最終更新日 ${date}`}</p>
                             <h1 css={styles.title}>{postData.title}</h1>
                             <div css={styles.thumbnail}>
                                 <picture>
