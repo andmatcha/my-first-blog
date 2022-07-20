@@ -23,6 +23,16 @@ interface postData {
 }
 
 const index = ({ allPostsData }) => {
+    // 表示データをカスタマイズ
+    allPostsData = allPostsData.map(
+        ({ id, title, updatedAt, thumbnail }: postData) => {
+            // 日付のフォーマットを修正
+            const dateArr = updatedAt.substring(0, 10).split("-");
+            updatedAt = `${dateArr[0]}年${dateArr[1]}月${dateArr[2]}日`;
+            return { id, title, updatedAt, thumbnail };
+        }
+    );
+
     return (
         <>
             <Head>
