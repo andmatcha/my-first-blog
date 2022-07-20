@@ -20,5 +20,8 @@ const styles = {
         display: flex;
         flex-direction: column;
         align-items: center;
+        @media (max-width: 960px) {
+            border-left: transparent;
+        }
     `,
 };
