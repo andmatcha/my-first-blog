@@ -43,6 +43,11 @@ const post = ({ postData }) => {
                                 css={styles.date}
                             >{`最終更新日 ${postData.updatedAt}`}</p>
                             <h1 css={styles.title}>{postData.title}</h1>
+                            <div css={styles.thumbnail}>
+                                <picture>
+                                    <img src={`/thumbnails/${postData.thumbnail}`} alt="" />
+                                </picture>
+                            </div>
                             <div
                                 css={styles.body}
                                 dangerouslySetInnerHTML={{
@@ -89,6 +94,13 @@ const styles = {
             top: 50%;
             left: -1.6rem;
             transform: translate(0, -50%);
+        }
+    `,
+    thumbnail: css`
+        width: 100%;
+        img {
+            width: 100%;
+            object-fit: contain;
         }
     `,
     body: css`
