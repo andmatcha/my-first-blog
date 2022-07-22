@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
     };
 };
 
-const index = ({ allPostsData }: { allPostsData: postData[] }) => {
+const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
     // 表示データをカスタマイズ
     const allPostsDataRequired: postDataRequired[] = allPostsData.map(
         ({ id, title, thumbnail, updatedAt, description }) => {
@@ -65,7 +65,7 @@ const index = ({ allPostsData }: { allPostsData: postData[] }) => {
     );
 };
 
-export default index;
+export default Index;
 
 const styles = {
     blogsArea: css`

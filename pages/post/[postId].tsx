@@ -6,6 +6,8 @@ import { findPost } from "../../lib/posts/findPost";
 import { postData } from "../../types/posts";
 import Showdown from "showdown";
 import selectAllIds from "../../lib/posts/selectAllIds";
+import { useEffect } from "react";
+import tocbot from "tocbot";
 
 export const getStaticPaths = async () => {
     const ids: { id: number }[] = await selectAllIds();
@@ -31,11 +33,34 @@ export const getStaticProps = async ({
     };
 };
 
-const post = ({ postData }: { postData: postData }) => {
-    const converter = new Showdown.Converter();
-    const bodyHtml = sanitizeHtml(converter.makeHtml(postData.body));
+const Post = ({ postData }: { postData: postData }) => {
+    const converter = new Showdown.Converter({ ghCompatibleHeaderId: true });
+    const bodyHtml = sanitizeHtml(converter.makeHtml(postData.body), {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+        allowedAttributes: {
+            ...sanitizeHtml.defaults.allowedAttributes,
+            h1: ["id"],
+            h2: ["id"],
+            h3: ["id"],
+            h4: ["id"],
+            h5: ["id"],
+            h6: ["id"],
+        },
+    });
+
     const dateArr = postData.updatedAt.substring(0, 10).split("-");
     const date = `${dateArr[0]}年${dateArr[1]}月${dateArr[2]}日`;
+
+    useEffect(() => {
+        tocbot.init({
+            tocSelector: ".toc",
+            contentSelector: ".body",
+            headingSelector: "h2, h3",
+        });
+
+        return () => tocbot.destroy();
+    }, []);
+
     return (
         <>
             <Head>
@@ -60,6 +85,7 @@ const post = ({ postData }: { postData: postData }) => {
                             </picture>
                         </div>
                         <div
+                            className="body"
                             css={styles.body}
                             dangerouslySetInnerHTML={{
                                 __html: bodyHtml,
@@ -72,7 +98,7 @@ const post = ({ postData }: { postData: postData }) => {
     );
 };
 
-export default post;
+export default Post;
 
 const styles = {
     thumbnail: css`
