@@ -32,14 +32,12 @@ export default SideProfile;
 
 const styles = {
     profileArea: css`
-        margin-top: 24px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border-bottom: 1px solid #edebe4;
-        @media (max-width: 1140px) {
-            border-bottom: transparent;
-        }
+        border-radius: 4px;
+        box-shadow: 0 0 4px #ccc;
+        padding: 24px;
     `,
     profilePicture: css`
         border-radius: 50%;
