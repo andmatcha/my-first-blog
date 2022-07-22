@@ -2,17 +2,25 @@ import { css } from "@emotion/react";
 import Link from "../global/MyLink";
 import { postDataRequired } from "../../types/posts";
 
-const PostCard = ({ id, thumbnail, updatedAt, title, description }: postDataRequired) => {
+const PostCard = ({
+    id,
+    thumbnail,
+    updatedAt,
+    title,
+    description,
+}: postDataRequired) => {
     return (
         <Link href={`/post/${id}`}>
             <article css={styles.card}>
-                <picture css={styles.imageBox}>
-                    <img
-                        src={`/thumbnails/${thumbnail}`}
-                        alt=""
-                        css={styles.image}
-                    />
-                </picture>
+                <div css={styles.imageBox}>
+                    <picture>
+                        <img
+                            src={`/thumbnails/${thumbnail}`}
+                            alt=""
+                            css={styles.image}
+                        />
+                    </picture>
+                </div>
                 <div css={styles.text}>
                     <h4 css={styles.date}>{updatedAt}</h4>
                     <h3 css={styles.title}>{title}</h3>
@@ -27,17 +35,20 @@ export default PostCard;
 
 const styles = {
     card: css`
-        width: 320px;
-        height: 480px;
+        width: 100%;
+        height: 240px;
         display: flex;
-        flex-direction: column;
         cursor: pointer;
         gap: 12px;
-        border: 1px solid #edebe4;
+        box-shadow: 0 0 4px #ccc;
+        background-color: #fffef5;
+        border-radius: 4px;
+        padding: 12px;
     `,
     imageBox: css`
-        width: 100%;
-        margin-bottom: 24px;
+        width: 480px;
+        display: flex;
+        align-items: center;
     `,
     image: css`
         width: 100%;
@@ -45,13 +56,13 @@ const styles = {
     `,
     text: css`
         width: 100%;
-        padding: 0 12px;
+        padding: 24px 0;
     `,
     date: css`
         color: #999;
     `,
     title: css`
         font-size: 1.6rem;
-        margin-top: 12px;
+        margin: 8px 0;
     `,
 };

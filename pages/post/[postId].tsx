@@ -41,11 +41,9 @@ const post = ({ postData }: { postData: postData }) => {
             <Head>
                 <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
-            <Layout head="">
-                <div css={styles.contentWrapper}>
-                    <div css={styles.content}>
-                        <p css={styles.date}>{`最終更新日 ${date}`}</p>
-                        <h1 css={styles.title}>{postData.title}</h1>
+            <Layout
+                head={
+                    <div css={styles.head}>
                         <div css={styles.thumbnail}>
                             <picture>
                                 <img
@@ -54,6 +52,13 @@ const post = ({ postData }: { postData: postData }) => {
                                 />
                             </picture>
                         </div>
+                        <h1 css={styles.title}>{postData.title}</h1>
+                    </div>
+                }
+            >
+                <div css={styles.contentWrapper}>
+                    <div css={styles.content}>
+                        <p css={styles.date}>{`最終更新日 ${date}`}</p>
                         <div
                             css={styles.body}
                             dangerouslySetInnerHTML={{
@@ -70,6 +75,34 @@ const post = ({ postData }: { postData: postData }) => {
 export default post;
 
 const styles = {
+    head: css`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 48px;
+    `,
+    thumbnail: css`
+        width: 40%;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 0 4px #ccc;
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+        @media (max-width: 1140px) {
+            width: 60%;
+        }
+        @media (max-width: 520px) {
+            width: 80%;
+        }
+    `,
+    title: css`
+        font-size: 2.4rem;
+        font-weight: 500;
+        margin: 24px 0;
+    `,
     contentWrapper: css`
         width: 100%;
         display: flex;
@@ -78,11 +111,9 @@ const styles = {
     `,
     content: css`
         width: 100%;
-    `,
-    title: css`
-        font-size: 2.4rem;
-        font-weight: 500;
-        margin: 1rem 0;
+        padding: 24px;
+        box-shadow: 0 0 4px #ccc;
+        border-radius: 4px;
     `,
     date: css`
         font-size: 1rem;
@@ -99,13 +130,6 @@ const styles = {
             top: 50%;
             left: -1.6rem;
             transform: translate(0, -50%);
-        }
-    `,
-    thumbnail: css`
-        width: 100%;
-        img {
-            width: 100%;
-            object-fit: contain;
         }
     `,
     body: css`

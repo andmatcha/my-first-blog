@@ -34,22 +34,24 @@ const styles = {
     contents: css`
         display: flex;
         justify-content: center;
-        width: 100%;
         gap: 24px;
-        padding: 8rem 13%;
-        @media (max-width: 960px) {
+        width: 90%;
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 4rem 0;
+        @media (max-width: 1140px) {
             flex-direction: column;
         }
     `,
     main: css`
         width: calc(75% - 12px);
-        @media (max-width: 960px) {
+        @media (max-width: 1140px) {
             width: 100%;
         }
     `,
     aside: css`
         width: calc(25% - 12px);
-        @media (max-width: 960px) {
+        @media (max-width: 1140px) {
             width: 100%;
         }
     `,
