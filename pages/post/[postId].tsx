@@ -91,6 +91,12 @@ const styles = {
             width: 100%;
             object-fit: contain;
         }
+        @media (max-width: 1140px) {
+            width: 60%;
+        }
+        @media (max-width: 520px) {
+            width: 80%;
+        }
     `,
     title: css`
         font-size: 2.4rem;

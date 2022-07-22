@@ -38,6 +38,7 @@ const styles = {
         border-radius: 4px;
         box-shadow: 0 0 4px #ccc;
         padding: 24px;
+        width: 100%;
     `,
     profilePicture: css`
         border-radius: 50%;

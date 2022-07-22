@@ -45,10 +45,8 @@ const styles = {
     `,
     main: css`
         width: calc(75% - 12px);
-        padding-left: 24px;
         @media (max-width: 1140px) {
             width: 100%;
-            padding-right: 24px;
         }
     `,
     aside: css`
