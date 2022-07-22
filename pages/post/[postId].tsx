@@ -43,6 +43,7 @@ const post = ({ postData }: { postData: postData }) => {
                     rel="canonical"
                     href={`https://www.piyocode.blog/post/${postData.id}`}
                 ></link>
+                <meta name="description" content={postData.description} />
                 <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
             <Layout head="">
