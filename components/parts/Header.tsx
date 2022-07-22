@@ -1,13 +1,16 @@
 import { css } from "@emotion/react";
+import Link from "../global/MyLink";
 
 const Header = () => {
     return (
         <>
             <header css={styles.header}>
-                <div css={styles.titleBox}>
-                    <h1 css={styles.title}>piYo code</h1>
-                    <h2 css={styles.titleSmall}>- engineer blog -</h2>
-                </div>
+                <Link href={"https://www.piyocode.blog"}>
+                    <div css={styles.titleBox}>
+                        <h1 css={styles.title}>piYo code</h1>
+                        <h2 css={styles.titleSmall}>- engineer blog -</h2>
+                    </div>
+                </Link>
             </header>
             <div css={styles.headerSpacer}></div>
         </>
@@ -37,6 +40,7 @@ const styles = {
         display: flex;
         align-items: center;
         gap: 24px;
+        cursor: pointer;
     `,
     title: css`
         color: #333;
