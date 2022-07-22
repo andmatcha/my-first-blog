@@ -8,6 +8,8 @@ import Showdown from "showdown";
 import selectAllIds from "../../lib/posts/selectAllIds";
 import { useEffect } from "react";
 import tocbot from "tocbot";
+import SideBar from "../../components/parts/SideBar";
+import TableOfContents from "../../components/parts/TableOfContents";
 
 export const getStaticPaths = async () => {
     const ids: { id: number }[] = await selectAllIds();
@@ -71,7 +73,7 @@ const Post = ({ postData }: { postData: postData }) => {
                 <meta name="description" content={postData.description} />
                 <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
-            <Layout head="">
+            <Layout head="" aside={<SideBar toc={<TableOfContents />} />}>
                 <div css={styles.contentWrapper}>
                     <div css={styles.content}>
                         <p css={styles.date}>{`最終更新日 ${date}`}</p>

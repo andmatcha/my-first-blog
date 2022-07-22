@@ -2,13 +2,11 @@ import { css } from "@emotion/react";
 import SideProfile from "./SideProfile";
 import TableOfContents from "./TableOfContents";
 
-const SideBar = () => {
+const SideBar = ({ toc }) => {
     return (
         <div css={styles.wrapper}>
             <SideProfile />
-            <div css={styles.table}>
-                <TableOfContents />
-            </div>
+            <div css={styles.table}>{toc}</div>
         </div>
     );
 };
@@ -27,8 +25,8 @@ const styles = {
         }
     `,
     table: css`
-    width: 100%;
-    height: fit-content;
+        width: 100%;
+        height: fit-content;
         @media (max-width: 1024px) {
             display: none;
         }

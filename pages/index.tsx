@@ -5,6 +5,7 @@ import PostCard from "../components/parts/PostCard";
 import { MainVisual } from "../components/parts/MainVisual";
 import selectAllPosts from "../lib/posts/selectAllPosts";
 import { postData, postDataRequired } from "../types/posts";
+import SideBar from "../components/parts/SideBar";
 
 export const getStaticProps = async () => {
     const allPostsData: postData[] = await selectAllPosts();
@@ -39,7 +40,7 @@ const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
                 />
                 <title>{`${siteTitle} - engineer blog`}</title>
             </Head>
-            <Layout head={<MainVisual />}>
+            <Layout head={<MainVisual />} aside={<SideBar toc />}>
                 <div css={styles.blogsArea}>
                     {allPostsDataRequired.map(
                         ({

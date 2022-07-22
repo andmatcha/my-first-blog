@@ -8,9 +8,11 @@ export const siteTitle: string = "piYo code";
 
 const Layout = ({
     head,
+    aside,
     children,
 }: {
     head: ReactNode;
+    aside: ReactNode;
     children: ReactNode;
 }) => {
     return (
@@ -20,9 +22,7 @@ const Layout = ({
                 <div>{head}</div>
                 <div css={styles.contents}>
                     <main css={styles.main}>{children}</main>
-                    <aside css={styles.aside}>
-                        <SideBar />
-                    </aside>
+                    <aside css={styles.aside}>{aside}</aside>
                 </div>
                 <Footer />
             </div>
