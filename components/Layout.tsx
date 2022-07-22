@@ -6,7 +6,13 @@ import { ReactNode } from "react";
 
 export const siteTitle: string = "piYo code";
 
-const Layout = ({ head, children }: { head: ReactNode; children: ReactNode; }) => {
+const Layout = ({
+    head,
+    children,
+}: {
+    head: ReactNode;
+    children: ReactNode;
+}) => {
     return (
         <>
             <div css={styles.wrapper}>
@@ -39,19 +45,19 @@ const styles = {
         max-width: 1320px;
         margin: 0 auto;
         padding: 4rem 0;
-        @media (max-width: 1140px) {
+        @media (max-width: 1024px) {
             flex-direction: column;
         }
     `,
     main: css`
         width: calc(75% - 12px);
-        @media (max-width: 1140px) {
+        @media (max-width: 1024px) {
             width: 100%;
         }
     `,
     aside: css`
         width: calc(25% - 12px);
-        @media (max-width: 1140px) {
+        @media (max-width: 1024px) {
             width: 100%;
         }
     `,
