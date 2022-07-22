@@ -6,7 +6,9 @@ const SideBar = () => {
     return (
         <div css={styles.wrapper}>
             <SideProfile />
-            <TableOfContents />
+            <div css={styles.table}>
+                <TableOfContents />
+            </div>
         </div>
     );
 };
@@ -22,6 +24,13 @@ const styles = {
         align-items: center;
         @media (max-width: 1024px) {
             box-shadow: none;
+        }
+    `,
+    table: css`
+    width: 100%;
+    height: fit-content;
+        @media (max-width: 1024px) {
+            display: none;
         }
     `,
 };
