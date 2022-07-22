@@ -39,6 +39,7 @@ const post = ({ postData }: { postData: postData }) => {
     return (
         <>
             <Head>
+                <link rel="canonical" href={`https://www.piyocode.blog/post/${postData.id}`}></link>
                 <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
             <Layout

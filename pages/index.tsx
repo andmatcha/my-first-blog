@@ -32,6 +32,7 @@ const index = ({ allPostsData }: { allPostsData: postData[] }) => {
     return (
         <>
             <Head>
+                <link rel="canonical" href="https://www.piyocode.blog"></link>
                 <title>{siteTitle}</title>
             </Head>
             <Layout
