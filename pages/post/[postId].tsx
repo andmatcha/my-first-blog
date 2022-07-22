@@ -82,6 +82,21 @@ const styles = {
         align-items: center;
         padding-top: 48px;
     `,
+    thumbnail: css`
+        width: 40%;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 0 4px #ccc;
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    `,
+    title: css`
+        font-size: 2.4rem;
+        font-weight: 500;
+        margin: 24px 0;
+    `,
     contentWrapper: css`
         width: 100%;
         display: flex;
@@ -93,11 +108,6 @@ const styles = {
         padding: 24px;
         box-shadow: 0 0 4px #ccc;
         border-radius: 4px;
-    `,
-    title: css`
-        font-size: 2.4rem;
-        font-weight: 500;
-        margin: 24px 0;
     `,
     date: css`
         font-size: 1rem;
@@ -114,16 +124,6 @@ const styles = {
             top: 50%;
             left: -1.6rem;
             transform: translate(0, -50%);
-        }
-    `,
-    thumbnail: css`
-        width: 40%;
-        border-radius: 4px;
-        overflow: hidden;
-        box-shadow: 0 0 4px #ccc;
-        img {
-            width: 100%;
-            object-fit: contain;
         }
     `,
     body: css`
