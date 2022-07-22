@@ -9,13 +9,13 @@ const SideProfile = () => {
                 </picture>
             </div>
             <h4 css={styles.writerName}>andmatcha</h4>
-            <p css={styles.role}>engineer</p>
+            <p css={styles.role}></p>
             <p css={styles.writerComment}>
-                大学1年目の春、プログラミングの面白さを知る。沼にハマること早1年。
+                趣味プログラマー。好きな食べ物は自分で作ったフレンチトーストです。
             </p>
             <ul css={styles.links}>
                 <li>
-                    <a href="https://jinaoyagi.com">Portfolio</a>
+                    <a href="https://jinaoyagi.com">Portfolio(準備中)</a>
                 </li>
                 <li>
                     <a href="https://github.com/andmatcha">GitHub</a>
