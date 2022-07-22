@@ -37,6 +37,9 @@ const styles = {
         flex-direction: column;
         align-items: center;
         border-bottom: 1px solid #edebe4;
+        @media (max-width: 1140px) {
+            border-bottom: transparent;
+        }
     `,
     profilePicture: css`
         border-radius: 50%;

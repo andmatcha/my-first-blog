@@ -19,7 +19,8 @@ const styles = {
         display: flex;
         justify-content: center;
         align-items: center;
-        @media (max-width: 960px) {
+        background-color: #fffef5;
+        @media (max-width: 1140px) {
             height: 120px;
         }
     `,
@@ -35,7 +36,7 @@ const styles = {
         color: #888;
         z-index: 50;
         text-shadow: 2px 2px 2px #ccc;
-        @media (max-width: 960px) {
+        @media (max-width: 1140px) {
             font-size: 2.4rem;
             letter-spacing: 0.3rem;
         }

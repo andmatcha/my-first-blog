@@ -20,7 +20,7 @@ const styles = {
         display: flex;
         flex-direction: column;
         align-items: center;
-        @media (max-width: 960px) {
+        @media (max-width: 1140px) {
             border-left: transparent;
         }
     `,
