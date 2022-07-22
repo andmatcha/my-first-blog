@@ -1,6 +1,5 @@
 import Header from "./parts/Header";
 import Footer from "./parts/Footer";
-import SideBar from "./parts/SideBar";
 import { css } from "@emotion/react";
 import { ReactNode } from "react";
 
