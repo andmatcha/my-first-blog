@@ -1,10 +1,12 @@
 import { css } from "@emotion/react";
 import SideProfile from "./SideProfile";
+import TableOfContents from "./TableOfContents";
 
-const SideBar = () => {
+const SideBar = ({ toc }) => {
     return (
         <div css={styles.wrapper}>
             <SideProfile />
+            <div css={styles.table}>{toc}</div>
         </div>
     );
 };
@@ -18,8 +20,15 @@ const styles = {
         display: flex;
         flex-direction: column;
         align-items: center;
-        @media (max-width: 1140px) {
+        @media (max-width: 1024px) {
             box-shadow: none;
+        }
+    `,
+    table: css`
+        width: 100%;
+        height: fit-content;
+        @media (max-width: 1024px) {
+            display: none;
         }
     `,
 };

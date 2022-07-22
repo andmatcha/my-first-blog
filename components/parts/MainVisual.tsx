@@ -33,7 +33,7 @@ const styles = {
         justify-content: center;
         align-items: center;
         background-color: #fffef5;
-        @media (max-width: 1140px) {
+        @media (max-width: 1024px) {
             height: 120px;
         }
     `,
@@ -56,7 +56,7 @@ const styles = {
         color: #888;
         z-index: 50;
         text-shadow: 2px 2px 2px #ccc;
-        @media (max-width: 1140px) {
+        @media (max-width: 1024px) {
             font-size: 2.4rem;
             letter-spacing: 0.3rem;
         }
@@ -67,7 +67,7 @@ const styles = {
     `,
     description: css`
         color: #333;
-        @media (max-width: 1140px) {
+        @media (max-width: 1024px) {
             display: none;
         }
     `,
@@ -81,7 +81,7 @@ const styles = {
             font-size: 2rem;
             letter-spacing: 0.06rem;
             line-height: 3rem;
-            @media (max-width: 1140px) {
+            @media (max-width: 1024px) {
                 font-size: 1.6rem;
             }
         }
