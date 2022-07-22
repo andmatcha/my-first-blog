@@ -36,16 +36,7 @@ const index = ({ allPostsData }: { allPostsData: postData[] }) => {
             </Head>
             <Layout
                 head={
-                    <MainVisual>
-                        <div css={styles.headText}>
-                            <h2>生まれたて技術ブログ</h2>
-                            <p>
-                                新しく学んだことや自分が勉強していてハマったことなどを投稿しています。Web系(React,
-                                Next.js,
-                                TypeScript)がメインですが、最近いろんな言語に手を出しています...
-                            </p>
-                        </div>
-                    </MainVisual>
+                    <MainVisual />
                 }
             >
                 <div css={styles.blogsArea}>
@@ -76,27 +67,6 @@ const index = ({ allPostsData }: { allPostsData: postData[] }) => {
 export default index;
 
 const styles = {
-    headText: css`
-        width: 100%;
-        display: flex;
-        margin-top: 24px;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        h2 {
-            font-size: 2rem;
-            letter-spacing: 0.06rem;
-            line-height: 3rem;
-        }
-        p {
-            padding: 12px;
-            width: 60%;
-            font-size: 1.2rem;
-            letter-spacing: 0.05rem;
-            line-height: 1.8rem;
-            text-align: center;
-        }
-    `,
     blogsArea: css`
         display: flex;
         flex-direction: column;
