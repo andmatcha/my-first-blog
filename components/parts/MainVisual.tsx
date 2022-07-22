@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-const MainVisual = () => {
+export const MainVisual = () => {
     return (
         <div css={styles.wrapper}>
             <picture css={styles.picture}>
@@ -10,8 +10,6 @@ const MainVisual = () => {
         </div>
     );
 };
-
-export default MainVisual;
 
 const styles = {
     wrapper: css`

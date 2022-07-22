@@ -1,7 +1,8 @@
 import prisma from "../prisma";
+import { postData } from "../../types/posts";
 
 // ビルド時に実行して投稿ページを生成するためのデータをDBから取得
-const findPost = async (postId) => {
+export const findPost = async (postId: string) => {
     const data = await prisma.post
         .findUniqueOrThrow({
             where: {
@@ -14,7 +15,6 @@ const findPost = async (postId) => {
         .finally(async () => {
             await prisma.$disconnect();
         });
-    const post = JSON.parse(JSON.stringify(data));
+    const post: postData = JSON.parse(JSON.stringify(data));
     return post;
 };
-export default findPost;

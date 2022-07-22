@@ -1,12 +1,13 @@
-import Layout, { siteTitle } from "../components/Layout";
-import Head from "next/head";
 import { css } from "@emotion/react";
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/Layout";
 import PostCard from "../components/parts/PostCard";
-import MainVisual from "../components/parts/MainVisual";
+import { MainVisual } from "../components/parts/MainVisual";
 import selectAllPosts from "../lib/posts/selectAllPosts";
+import { postData, postDataRequired } from "../types/posts";
 
 export const getStaticProps = async () => {
-    const allPostsData: {}[] = await selectAllPosts();
+    const allPostsData: postData[] = await selectAllPosts();
 
     return {
         props: {
@@ -15,21 +16,16 @@ export const getStaticProps = async () => {
     };
 };
 
-interface postData {
-    id: string;
-    title: string;
-    updatedAt: string;
-    thumbnail: string;
-}
-
-const index = ({ allPostsData }) => {
+const index = ({ allPostsData }: { allPostsData: postData[] }) => {
     // 表示データをカスタマイズ
-    allPostsData = allPostsData.map(
-        ({ id, title, updatedAt, thumbnail }: postData) => {
+    const allPostsDataRequired: postDataRequired[] = allPostsData.map(
+        ({ id, title, thumbnail, updatedAt, description }) => {
+            // idをstringに変換
+            const idStr = id.toString();
             // 日付のフォーマットを修正
             const dateArr = updatedAt.substring(0, 10).split("-");
             updatedAt = `${dateArr[0]}年${dateArr[1]}月${dateArr[2]}日`;
-            return { id, title, updatedAt, thumbnail };
+            return { id: idStr, title, thumbnail, updatedAt, description };
         }
     );
 
@@ -38,24 +34,28 @@ const index = ({ allPostsData }) => {
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <Layout
-                head={<MainVisual />}
-                main={
-                    <div css={styles.blogsArea}>
-                        {allPostsData.map(
-                            ({ id, title, updatedAt, thumbnail }: postData) => (
-                                <PostCard
-                                    key={id}
-                                    postId={id}
-                                    title={title}
-                                    src={thumbnail}
-                                    date={updatedAt}
-                                />
-                            )
-                        )}
-                    </div>
-                }
-            />
+            <Layout head={<MainVisual />}>
+                <div css={styles.blogsArea}>
+                    {allPostsDataRequired.map(
+                        ({
+                            id,
+                            title,
+                            thumbnail,
+                            updatedAt,
+                            description,
+                        }: postDataRequired) => (
+                            <PostCard
+                                key={id}
+                                id={id.toString()}
+                                title={title}
+                                thumbnail={thumbnail}
+                                updatedAt={updatedAt}
+                                description={description}
+                            />
+                        )
+                    )}
+                </div>
+            </Layout>
         </>
     );
 };

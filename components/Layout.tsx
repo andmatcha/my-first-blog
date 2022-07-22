@@ -2,17 +2,18 @@ import Header from "./parts/Header";
 import Footer from "./parts/Footer";
 import SideBar from "./parts/SideBar";
 import { css } from "@emotion/react";
+import { ReactNode } from "react";
 
-export const siteTitle = "piYo code | Engineering Blog";
+export const siteTitle: string = "piYo code | Engineering Blog";
 
-const Layout = (props: { head: any; main: any; }) => {
+const Layout = ({ head, children }: { head: ReactNode; children: ReactNode; }) => {
     return (
         <>
             <div css={styles.wrapper}>
                 <Header />
-                <div>{props.head}</div>
+                <div>{head}</div>
                 <div css={styles.contents}>
-                    <main css={styles.main}>{props.main}</main>
+                    <main css={styles.main}>{children}</main>
                     <aside css={styles.aside}>
                         <SideBar />
                     </aside>

@@ -1,25 +1,27 @@
 import { css } from "@emotion/react";
 import Link from "../global/MyLink";
+import { postDataRequired } from "../../types/posts";
 
-const PostCard = (props: { postId: string; title: string; src: string; date: string; }) => {
+const PostCard = ({ id, thumbnail, updatedAt, title, description }: postDataRequired) => {
     return (
-        <Link href={`/post/${props.postId}`}>
+        <Link href={`/post/${id}`}>
             <article css={styles.card}>
                 <picture css={styles.imageBox}>
                     <img
-                        src={`/thumbnails/${props.src}`}
+                        src={`/thumbnails/${thumbnail}`}
                         alt=""
                         css={styles.image}
                     />
                 </picture>
                 <div css={styles.text}>
-                    <h4 css={styles.date}>{props.date}</h4>
-                    <h3 css={styles.title}>{props.title}</h3>
+                    <h4 css={styles.date}>{updatedAt}</h4>
+                    <h3 css={styles.title}>{title}</h3>
+                    <p>{description}</p>
                 </div>
             </article>
         </Link>
     );
-}
+};
 
 export default PostCard;
 
