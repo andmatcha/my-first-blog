@@ -2,13 +2,14 @@ import Layout, { siteTitle } from "../../components/Layout";
 import sanitizeHtml from "sanitize-html";
 import Head from "next/head";
 import { css } from "@emotion/react";
-import findPost from "../../lib/posts/findPost";
+import { findPost } from "../../lib/posts/findPost";
+import { postData } from "../../types/posts";
 import Showdown from "showdown";
 import selectAllIds from "../../lib/posts/selectAllIds";
 
 export const getStaticPaths = async () => {
-    const ids = await selectAllIds();
-    const paths = [];
+    const ids: { id: number }[] = await selectAllIds();
+    const paths: { params: { postId: string } }[] = [];
     ids.forEach((v) => {
         const postId = v.id.toString();
         paths.push({ params: { postId: postId } });
@@ -19,14 +20,18 @@ export const getStaticPaths = async () => {
     };
 };
 
-export const getStaticProps = async ({ params }) => {
-    const postData = await findPost(params.postId);
+export const getStaticProps = async ({
+    params,
+}: {
+    params: { postId: string };
+}) => {
+    const postData: postData = await findPost(params.postId);
     return {
         props: { postData },
     };
 };
 
-const post = ({ postData }) => {
+const post = ({ postData }: { postData: postData }) => {
     const converter = new Showdown.Converter();
     const bodyHtml = sanitizeHtml(converter.makeHtml(postData.body));
     const dateArr = postData.updatedAt.substring(0, 10).split("-");
@@ -34,35 +39,30 @@ const post = ({ postData }) => {
     return (
         <>
             <Head>
-                <title>{`${postData.title} | siteTitle`}</title>
+                <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
-            <Layout
-                head=""
-                main={
-                    <div css={styles.contentWrapper}>
-                        <div css={styles.content}>
-                            <p
-                                css={styles.date}
-                            >{`最終更新日 ${date}`}</p>
-                            <h1 css={styles.title}>{postData.title}</h1>
-                            <div css={styles.thumbnail}>
-                                <picture>
-                                    <img
-                                        src={`/thumbnails/${postData.thumbnail}`}
-                                        alt=""
-                                    />
-                                </picture>
-                            </div>
-                            <div
-                                css={styles.body}
-                                dangerouslySetInnerHTML={{
-                                    __html: bodyHtml,
-                                }}
-                            ></div>
+            <Layout head="">
+                <div css={styles.contentWrapper}>
+                    <div css={styles.content}>
+                        <p css={styles.date}>{`最終更新日 ${date}`}</p>
+                        <h1 css={styles.title}>{postData.title}</h1>
+                        <div css={styles.thumbnail}>
+                            <picture>
+                                <img
+                                    src={`/thumbnails/${postData.thumbnail}`}
+                                    alt=""
+                                />
+                            </picture>
                         </div>
+                        <div
+                            css={styles.body}
+                            dangerouslySetInnerHTML={{
+                                __html: bodyHtml,
+                            }}
+                        ></div>
                     </div>
-                }
-            />
+                </div>
+            </Layout>
         </>
     );
 };
@@ -112,7 +112,6 @@ const styles = {
         color: #333;
         margin-top: 4rem;
         width: 100%;
-        @import "~normalize.css";
         h2 {
             font-size: 2rem;
             font-weight: 600;
