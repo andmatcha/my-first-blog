@@ -39,11 +39,18 @@ const post = ({ postData }: { postData: postData }) => {
     return (
         <>
             <Head>
+                <link
+                    rel="canonical"
+                    href={`https://www.piyocode.blog/post/${postData.id}`}
+                ></link>
+                <meta name="description" content={postData.description} />
                 <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
-            <Layout
-                head={
-                    <div css={styles.head}>
+            <Layout head="">
+                <div css={styles.contentWrapper}>
+                    <div css={styles.content}>
+                        <p css={styles.date}>{`最終更新日 ${date}`}</p>
+                        <h1 css={styles.title}>{postData.title}</h1>
                         <div css={styles.thumbnail}>
                             <picture>
                                 <img
@@ -52,13 +59,6 @@ const post = ({ postData }: { postData: postData }) => {
                                 />
                             </picture>
                         </div>
-                        <h1 css={styles.title}>{postData.title}</h1>
-                    </div>
-                }
-            >
-                <div css={styles.contentWrapper}>
-                    <div css={styles.content}>
-                        <p css={styles.date}>{`最終更新日 ${date}`}</p>
                         <div
                             css={styles.body}
                             dangerouslySetInnerHTML={{
@@ -75,15 +75,8 @@ const post = ({ postData }: { postData: postData }) => {
 export default post;
 
 const styles = {
-    head: css`
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 48px;
-    `,
     thumbnail: css`
-        width: 40%;
+        width: 100%;
         border-radius: 4px;
         overflow: hidden;
         box-shadow: 0 0 4px #ccc;
@@ -91,17 +84,11 @@ const styles = {
             width: 100%;
             object-fit: contain;
         }
-        @media (max-width: 1140px) {
-            width: 60%;
-        }
-        @media (max-width: 520px) {
-            width: 80%;
-        }
     `,
     title: css`
         font-size: 2.4rem;
         font-weight: 500;
-        margin: 24px 0;
+        margin-bottom: 24px;
     `,
     contentWrapper: css`
         width: 100%;
@@ -119,7 +106,8 @@ const styles = {
         font-size: 1rem;
         color: #7d6f5e;
         position: relative;
-        margin-left: 1.6rem;
+        margin-left: 1.8rem;
+        margin-bottom: 8px;
         &::before {
             content: "";
             width: 1rem;

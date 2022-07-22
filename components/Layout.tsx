@@ -4,7 +4,7 @@ import SideBar from "./parts/SideBar";
 import { css } from "@emotion/react";
 import { ReactNode } from "react";
 
-export const siteTitle: string = "piYo code | Engineering Blog";
+export const siteTitle: string = "piYo code";
 
 const Layout = ({ head, children }: { head: ReactNode; children: ReactNode; }) => {
     return (
