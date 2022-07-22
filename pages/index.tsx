@@ -68,7 +68,7 @@ const styles = {
     `,
     blogsArea: css`
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 12px;
     `,
 };

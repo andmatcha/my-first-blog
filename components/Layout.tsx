@@ -36,8 +36,8 @@ const styles = {
         justify-content: center;
         gap: 24px;
         width: 90%;
-        max-width: 1200px;
-        margin: 8rem auto;
+        max-width: 1320px;
+        margin: 0 auto;
         padding: 4rem 0;
         @media (max-width: 1140px) {
             flex-direction: column;
