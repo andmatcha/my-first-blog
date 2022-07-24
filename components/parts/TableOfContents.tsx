@@ -63,8 +63,5 @@ const styles = {
                 box-shadow: 0 0 6px #f5cf32;
             }
         }
-        ol > li li {
-            /* font-size: 1rem; */
-        }
     `,
 };
