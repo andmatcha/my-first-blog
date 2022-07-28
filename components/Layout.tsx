@@ -46,6 +46,7 @@ const styles = {
         padding: 4rem 0;
         @media (max-width: 1024px) {
             flex-direction: column;
+            padding: 1rem 0;
         }
     `,
     main: css`
