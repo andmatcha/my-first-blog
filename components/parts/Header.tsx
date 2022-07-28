@@ -7,7 +7,7 @@ const Header = () => {
             <header css={styles.header}>
                 <Link href={"https://www.piyocode.blog"}>
                     <div css={styles.titleBox}>
-                        <h1 css={styles.title}>piYo code</h1>
+                        <h1 css={styles.title}>ぴよこーど</h1>
                         <h2 css={styles.titleSmall}>- engineer blog -</h2>
                     </div>
                 </Link>
@@ -45,7 +45,7 @@ const styles = {
     title: css`
         color: #333;
         font-size: 1.6rem;
-        font-family: "Comfortaa", cursive;
+        font-family: "Noto Sans JP", sans-serif;
         letter-spacing: 0.1rem;
     `,
     titleSmall: css`

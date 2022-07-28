@@ -10,11 +10,9 @@ export const MainVisual = () => {
                 <h2 css={styles.title}>Little by little...🐥</h2>
                 <div css={styles.description}>
                     <div css={styles.headText}>
-                        <h2>生まれたて技術ブログ</h2>
+                        <h2>生まれたてWebエンジニアブログ</h2>
                         <p>
-                            新しく学んだことや自分が勉強していてハマったことなどを投稿しています。Web系(React,
-                            Next.js,
-                            TypeScript)がメインですが、最近いろんな言語に手を出しています...
+                            ひよっこエンジニアならではの視点でWebフロントエンド・バックエンド・周辺知識を噛み砕いてお届け
                         </p>
                     </div>
                 </div>
