@@ -87,7 +87,7 @@ const styles = {
     `,
     sideTopSpacer: css`
         width: 100%;
-        height: 68.8px;
+        height: 44.8px;
     `,
     blogsArea: css`
         display: flex;
