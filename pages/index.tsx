@@ -6,6 +6,8 @@ import { MainVisual } from "../components/parts/MainVisual";
 import selectAllPosts from "../lib/posts/selectAllPosts";
 import { postData, postDataRequired } from "../types/posts";
 import SideBar from "../components/parts/SideBar";
+import SideProfile from "../components/parts/SideProfile";
+import MonthList from "../components/parts/MonthList";
 
 export const getStaticProps = async () => {
     const allPostsData: postData[] = await selectAllPosts();
@@ -44,8 +46,14 @@ const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
                 head={<MainVisual />}
                 aside={
                     <SideBar
-                        toc
                         topSpacer={<div css={styles.sideTopSpacer}></div>}
+                        contents={
+                            <>
+                                <SideProfile />
+                                <MonthList />
+                            </>
+                        }
+                        toc
                     />
                 }
             >

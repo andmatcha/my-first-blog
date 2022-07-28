@@ -2,12 +2,11 @@ import { css } from "@emotion/react";
 import SideProfile from "./SideProfile";
 import MonthList from "./MonthList";
 
-const SideBar = ({ toc, topSpacer }) => {
+const SideBar = ({ toc, topSpacer, contents }) => {
     return (
         <div css={styles.wrapper}>
             {topSpacer}
-            <SideProfile />
-            <MonthList />
+            {contents}
             <div css={styles.table}>{toc}</div>
         </div>
     );

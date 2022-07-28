@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import tocbot from "tocbot";
 import SideBar from "../../components/parts/SideBar";
 import TableOfContents from "../../components/parts/TableOfContents";
+import SideProfile from "../../components/parts/SideProfile";
 
 export const getStaticPaths = async () => {
     const ids: { id: number }[] = await selectAllIds();
@@ -73,7 +74,10 @@ const Post = ({ postData }: { postData: postData }) => {
                 <meta name="description" content={postData.description} />
                 <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
-            <Layout head="" aside={<SideBar toc={<TableOfContents />} topSpacer />}>
+            <Layout
+                head=""
+                aside={<SideBar topSpacer contents={<><SideProfile /></>} toc={<TableOfContents />} />}
+            >
                 <div css={styles.contentWrapper}>
                     <div css={styles.content}>
                         <p css={styles.date}>{`最終更新日 ${date}`}</p>
