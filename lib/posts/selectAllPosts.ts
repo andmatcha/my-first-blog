@@ -7,6 +7,9 @@ const selectAllPosts = async () => {
             where: {
                 published: true,
             },
+            orderBy: {
+                updatedAt: 'desc'
+            }
         })
         .catch((e) => {
             throw e;
