@@ -36,9 +36,9 @@ const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
                 <link rel="canonical" href="https://www.piyocode.blog"></link>
                 <meta
                     name="description"
-                    content="フロントエンドからバックエンドまでWebサイト・Webアプリケーション開発についての話題を中心に発信しています。趣味でReact, Next.js, TypeScriptをやっています。インターンでLaravelもやっています。"
+                    content="フロントエンドからバックエンドまでWebサイト・Webアプリケーション開発についての話題を中心に発信しています。"
                 />
-                <title>{`${siteTitle} - engineer blog`}</title>
+                <title>{`${siteTitle} - Webエンジニアブログ`}</title>
             </Head>
             <Layout
                 head={<MainVisual />}

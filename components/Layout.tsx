@@ -3,7 +3,7 @@ import Footer from "./parts/Footer";
 import { css } from "@emotion/react";
 import { ReactNode } from "react";
 
-export const siteTitle: string = "piYo code";
+export const siteTitle: string = "ぴよこーど";
 
 const Layout = ({
     head,
