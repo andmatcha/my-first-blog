@@ -41,6 +41,7 @@ const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
                 <title>{`${siteTitle} - engineer blog`}</title>
             </Head>
             <Layout head={<MainVisual />} aside={<SideBar toc />}>
+                <h2 css={styles.title}>新着記事</h2>
                 <div css={styles.blogsArea}>
                     {allPostsDataRequired.map(
                         ({
@@ -69,6 +70,10 @@ const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
 export default Index;
 
 const styles = {
+    title: css`
+        margin: 16px 0;
+        font-size: 2rem;
+    `,
     blogsArea: css`
         display: flex;
         flex-direction: column;
