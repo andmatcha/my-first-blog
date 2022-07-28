@@ -1,11 +1,26 @@
 import { css } from "@emotion/react";
+import selectAllPosts from "../../lib/posts/selectAllPosts";
 
-const MonthList = () => {
+// const months: string[] = [];
+// const getPostMonths = async () => {
+//     const posts = await selectAllPosts();
+//     posts.forEach((post: {updatedAt: string}) => {
+//         const monthArr = post.updatedAt.substring(0, 10).split("-");
+//         const month = `${monthArr[0]}年${monthArr[1]}月`;
+//         months.push(month);
+//     });
+// };
+
+// getPostMonths();
+
+const MonthList = ({ months }: {months: string[]}) => {
     return (
         <div css={styles.wrapper}>
             <h3 css={styles.title}>月別アーカイブ</h3>
             <ul css={styles.monthList}>
-                <li>2022年7月</li>
+                {months.map((month) => (
+                    <li key={month}>{month}</li>
+                ))}
             </ul>
         </div>
     );
