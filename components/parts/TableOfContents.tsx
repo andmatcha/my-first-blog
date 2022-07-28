@@ -19,7 +19,6 @@ const styles = {
         align-items: center;
         padding: 24px;
         box-shadow: 0 0 4px #ccc;
-        margin-top: 24px;
         font-family: "Roboto Mono", "Noto Sans JP", sans-serif;
     `,
     title: css`
@@ -42,9 +41,9 @@ const styles = {
             padding-left: 1.2rem;
             ::before {
                 content: "";
-                width: 8px;
-                height: 8px;
-                margin: 4px;
+                width: 6px;
+                height: 6px;
+                margin: 6px;
                 background-color: #ccc;
                 border-radius: 50%;
                 position: absolute;
@@ -59,6 +58,9 @@ const styles = {
                 font-weight: 600;
             }
             ::before {
+                width: 8px;
+                height: 8px;
+                margin: 4px;
                 background-color: #f5cf32;
                 box-shadow: 0 0 6px #f5cf32;
             }
