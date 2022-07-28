@@ -44,11 +44,18 @@ const styles = {
         background-color: #fffef5;
         border-radius: 4px;
         padding: 12px;
+        @media (max-width: 520px) {
+            flex-direction: column;
+            height: auto;
+        }
     `,
     imageBox: css`
         width: 480px;
         display: flex;
         align-items: center;
+        @media (max-width: 520px) {
+            width: auto;
+        }
     `,
     image: css`
         width: 100%;
@@ -57,6 +64,9 @@ const styles = {
     text: css`
         width: 100%;
         padding: 24px 0;
+        @media (max-width: 520px) {
+            font-size: 0.9rem;
+        }
     `,
     date: css`
         color: #999;
@@ -64,5 +74,8 @@ const styles = {
     title: css`
         font-size: 1.6rem;
         margin: 8px 0;
+        @media (max-width: 520px) {
+            font-size: 1.2rem;
+        }
     `,
 };

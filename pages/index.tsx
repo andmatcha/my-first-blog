@@ -40,7 +40,15 @@ const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
                 />
                 <title>{`${siteTitle} - engineer blog`}</title>
             </Head>
-            <Layout head={<MainVisual />} aside={<SideBar toc />}>
+            <Layout
+                head={<MainVisual />}
+                aside={
+                    <SideBar
+                        toc
+                        topSpacer={<div css={styles.sideTopSpacer}></div>}
+                    />
+                }
+            >
                 <h2 css={styles.title}>新着記事</h2>
                 <div css={styles.blogsArea}>
                     {allPostsDataRequired.map(
@@ -73,10 +81,17 @@ const styles = {
     title: css`
         margin: 16px 0;
         font-size: 2rem;
+        @media (max-width: 520px) {
+            font-size: 1.6rem;
+        }
+    `,
+    sideTopSpacer: css`
+        width: 100%;
+        height: 68.8px;
     `,
     blogsArea: css`
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 24px;
     `,
 };

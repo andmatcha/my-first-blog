@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
 import SideProfile from "./SideProfile";
-import TableOfContents from "./TableOfContents";
 
-const SideBar = ({ toc }) => {
+const SideBar = ({ toc, topSpacer }) => {
     return (
         <div css={styles.wrapper}>
+            {topSpacer}
             <SideProfile />
             <div css={styles.table}>{toc}</div>
         </div>
