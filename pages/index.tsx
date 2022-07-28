@@ -6,18 +6,30 @@ import { MainVisual } from "../components/parts/MainVisual";
 import selectAllPosts from "../lib/posts/selectAllPosts";
 import { postData, postDataRequired } from "../types/posts";
 import SideBar from "../components/parts/SideBar";
+import SideProfile from "../components/parts/SideProfile";
+import MonthList from "../components/parts/MonthList";
 
 export const getStaticProps = async () => {
     const allPostsData: postData[] = await selectAllPosts();
 
+    let months: string[] = [];
+    allPostsData.forEach((postData) => {
+        const monthArr = postData.updatedAt.substring(0, 10).split("-");
+        const monthStr = `${monthArr[0]}年${monthArr[1]}月`;
+        months.push(monthStr);
+        const setTmp = new Set(months);
+        months = [...setTmp];
+    });
+
     return {
         props: {
             allPostsData,
+            months
         },
     };
 };
 
-const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
+const Index = ({ allPostsData, months }: { allPostsData: postData[], months: string[] }) => {
     // 表示データをカスタマイズ
     const allPostsDataRequired: postDataRequired[] = allPostsData.map(
         ({ id, title, thumbnail, updatedAt, description }) => {
@@ -44,8 +56,14 @@ const Index = ({ allPostsData }: { allPostsData: postData[] }) => {
                 head={<MainVisual />}
                 aside={
                     <SideBar
-                        toc
                         topSpacer={<div css={styles.sideTopSpacer}></div>}
+                        contents={
+                            <>
+                                <SideProfile />
+                                <MonthList months={months} />
+                            </>
+                        }
+                        toc
                     />
                 }
             >
@@ -87,7 +105,7 @@ const styles = {
     `,
     sideTopSpacer: css`
         width: 100%;
-        height: 68.8px;
+        height: 44.8px;
     `,
     blogsArea: css`
         display: flex;
