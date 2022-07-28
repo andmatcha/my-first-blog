@@ -73,7 +73,7 @@ const Post = ({ postData }: { postData: postData }) => {
                 <meta name="description" content={postData.description} />
                 <title>{`${postData.title} | ${siteTitle}`}</title>
             </Head>
-            <Layout head="" aside={<SideBar toc={<TableOfContents />} />}>
+            <Layout head="" aside={<SideBar toc={<TableOfContents />} topSpacer />}>
                 <div css={styles.contentWrapper}>
                     <div css={styles.content}>
                         <p css={styles.date}>{`最終更新日 ${date}`}</p>
